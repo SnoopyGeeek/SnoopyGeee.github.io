@@ -24,7 +24,7 @@ $ make
 `ln -s ../nauty* nauty`
 5. Modify the extra_objects argument in setup.py:
 
-```python
+```
 # from
 extra_objects = [ nauty_dir + '/' + 'nauty.so', ],
                       nauty_dir + '/' + 'nautil.o',
@@ -33,7 +33,7 @@ extra_objects = [ nauty_dir + '/' + 'nauty.so', ],
 # change it to
 extra_objects = [nauty_dir + '/' + 'nauty.a'],
 ```
-You can find extra_objects by searching for key words and change it like the form.
+  You can find extra_objects by searching for key words and change it like the form.
 
 6. `python setup.py build`
 7. `python setup.py install`
