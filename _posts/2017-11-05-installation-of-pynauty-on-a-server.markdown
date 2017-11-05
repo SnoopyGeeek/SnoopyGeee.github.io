@@ -2,7 +2,7 @@
 layout: post
 title: Installation of pynauty on a server
 date: 2017-11-05 16:36:24.000000000 +09:00
-tag：pynauty graphembedding
+tags：pynauty graphembedding
 ---
 
 #### What's this
@@ -14,15 +14,15 @@ tag：pynauty graphembedding
 
 ####Deploying procedures
 1. Download [pynauty source file](https://github.com/katsiatyna/pynauty_0.6.0-modification) and put them into one dir.
-2. Download [nauty source file](http://users.cecs.anu.edu.au/~bdm/nauty/), unzip them, put them into a folder called [nauty] under pynauty dir.
-3. cd into the [nauty] dir, input
+2. Download [nauty source file](http://users.cecs.anu.edu.au/~bdm/nauty/), unzip them, put them into a folder called *nauty* under pynauty dir.
+3. cd into the *nauty* dir, input
 ```bash
 $ source activate
 $ bash CFLAGS=-fPIC ./configure
 $ make
 ```
-4. cd into [pynauty] dir, input:
-[ln -s ../nauty* nauty]
+4. cd into *pynauty* dir, input:
+`ln -s ../nauty* nauty]`
 5. Modify the extra_objects argument in setup.py:
 
 ```python
@@ -36,8 +36,8 @@ extra_objects = [nauty_dir + '/' + 'nauty.a'],
 ```
 You can find extra_objects by searching for key words and change it like the form.
 
-6. [python setup.py build]
-7. [python setup.py install]
+6. *python setup.py build*
+7. **python setup.py install**
 
 
 #### Conclusion
