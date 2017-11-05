@@ -2,45 +2,44 @@
 layout: post
 title: Installation of pynauty on a server
 date: 2017-11-05 16:36:24.000000000 +09:00
+tags：pynauty graphembedding
 ---
 
 #### What's this
 
-[Vno Jekyll](https://github.com/onevcat/vno-jekyll) is a theme for [Jekyll](http://jekyllrb.com). It is a port of my Ghost theme [vno](https://github.com/onevcat/vno), which is originally developed from [Dale Anthony's Uno](https://github.com/daleanthony/uno).
+[Pynauty](https://web.cs.dal.ca/~peter/software/pynauty/html/index.html) is a Python/C extension module. It can be used to compare graphs for isomorphism and to determine their automorphism group. It is based on the [Nauty](http://www3.cs.stonybrook.edu/~algorith/implement/nauty/implement.shtml) C procedures.
 
-#### Usage
+#### Issues I met
+1. I have a server access without root authority. I want to deploy the package on the server but ./configure doesn't work.
 
+####Deploying procedures
+1. Download [pynauty source file](https://github.com/katsiatyna/pynauty_0.6.0-modification) and put them into one dir.
+2. Download [nauty source file](http://users.cecs.anu.edu.au/~bdm/nauty/), unzip them, put them into a folder called [nauty] under pynauty dir.
+3. cd into the [nauty] dir, input
 ```bash
-$ git clone https://github.com/onevcat/vno-jekyll.git your_site
-$ cd your_site
-$ bundler install
-$ bundler exec jekyll serve
+$ source activate
+$ bash CFLAGS=-fPIC ./configure
+$ make
 ```
+4. cd into [pynauty] dir, input:
+[ln -s ../nauty* nauty]
+5. Modify the extra_objects argument in setup.py:
 
-Your site with `Vno Jekyll` enabled should be accessible in http://127.0.0.1:4000.
+```python
+# from
+extra_objects = [ nauty_dir + '/' + 'nauty.so', ],
+                      nauty_dir + '/' + 'nautil.o',
+                      nauty_dir + '/' + 'naugraph.o'
+                    ],
+# change it to
+extra_objects = [nauty_dir + '/' + 'nauty.a'],
+```
+You can find extra_objects by searching for key words and change it like the form.
 
-For more information about Jekyll, please visit [Jekyll's site](http://jekyllrb.com).
+6. [python setup.py build]
+7. [python setup.py install]
 
-#### Configuration
 
-All configuration could be done in `_config.yml`. Remember you need to restart to serve the page when after changing the config file. Everything in the config file should be self-explanatory.
+#### Conclusion
 
-#### Background image and avatar
-
-You could replace the background and avatar image in `assets/images` folder to change them.
-
-#### Sites using Vno
-
-[My blog](http://onevcat.com) is using `Vno Jekyll` as well, you could see how it works in real. There are some other sites using the same theme. You can find them below:
-
-| Site Name    | URL                                                |
-| ------------ | ---------------------------------------------------|
-| OneV's Den   | [http://onevcat.com](http://onevcat.com)           |
-| July Tang    | [http://blog.julytang.xyz](http://onevcat.com)     |
-| Harry Lee    | [http://qiuqi.li](http://qiuqi.li)                 |
-
-> If you happen to be using this theme, welcome to [send me a pull request](https://github.com/onevcat/vno-jekyll/pulls) to add your site link here. :)
-
-#### License
-
-Great thanks to [Dale Anthony](https://github.com/daleanthony) and his [Uno](https://github.com/daleanthony/uno). Vno Jekyll is based on Uno, and contains a lot of modification on page layout, animation, font and some more things I can not remember. Vno Jekyll is followed with Uno and be licensed as [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/). See the link for more information.
+Here it goes, I can import pynauty package in my environment. Before that, I have installed anaconda on my end.
