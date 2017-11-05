@@ -22,7 +22,7 @@ $ bash CFLAGS=-fPIC ./configure
 $ make
 ```
 4. cd into *pynauty* dir, input:
-`ln -s ../nauty* nauty]`
+`ln -s ../nauty* nauty`
 5. Modify the extra_objects argument in setup.py:
 
 ```python
