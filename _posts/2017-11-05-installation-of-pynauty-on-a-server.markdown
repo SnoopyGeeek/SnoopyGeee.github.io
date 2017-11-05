@@ -2,7 +2,6 @@
 layout: post
 title: Installation of pynauty on a server
 date: 2017-11-05 16:36:24.000000000 +09:00
-tags：pynauty graphembedding
 ---
 
 #### Introduction
