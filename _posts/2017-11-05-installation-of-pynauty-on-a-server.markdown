@@ -24,7 +24,7 @@ $ make
 `ln -s ../nauty* nauty`
 * Modify the extra_objects argument in setup.py:
 
-```
+```python
 # from
 extra_objects = [ nauty_dir + '/' + 'nauty.so', ],
                       nauty_dir + '/' + 'nautil.o',
