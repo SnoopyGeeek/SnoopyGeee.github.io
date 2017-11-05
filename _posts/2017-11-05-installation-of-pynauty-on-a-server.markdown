@@ -12,17 +12,17 @@ date: 2017-11-05 16:36:24.000000000 +09:00
 1. I have a server access without root authority. I want to deploy the package on the server but ./configure doesn't work.
 
 #### Deploying procedures
-1. Download [pynauty source file](https://github.com/katsiatyna/pynauty_0.6.0-modification) and put them into one dir.
-1. Download [nauty source file](http://users.cecs.anu.edu.au/~bdm/nauty/), unzip them, put them into a folder called *nauty* under pynauty dir.
-1. cd into the *nauty* dir, input
+* Download [pynauty source file](https://github.com/katsiatyna/pynauty_0.6.0-modification) and put them into one dir.
+* Download [nauty source file](http://users.cecs.anu.edu.au/~bdm/nauty/), unzip them, put them into a folder called *nauty* under pynauty dir.
+* cd into the *nauty* dir, input
 ```bash
 $ source activate
 $ bash CFLAGS=-fPIC ./configure
 $ make
 ```
-1. cd into *pynauty* dir, input:
+* cd into *pynauty* dir, input:
 `ln -s ../nauty* nauty`
-1. Modify the extra_objects argument in setup.py:
+* Modify the extra_objects argument in setup.py:
 
 ```
 # from
@@ -35,8 +35,8 @@ extra_objects = [nauty_dir + '/' + 'nauty.a'],
 ```
   You can find extra_objects by searching for key words and change it like the form.
 
-1. `python setup.py build`
-1. `python setup.py install`
+* `python setup.py build`
+* `python setup.py install`
 
 
 #### Conclusion
