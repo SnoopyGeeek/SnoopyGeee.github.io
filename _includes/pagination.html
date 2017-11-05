@@ -1,10 +1,11 @@
-{% if counter > 5 %}
-    <div class="col-lg-6 col-lg-offset-6">
-		<div class="pag-holder"></div>
-	</div>
-{% endif %}
-{% if counter == 0 %}
-    <div class="col-lg-8 col-lg-offset-2">
-		<p>Sorry,no blog！</p>
-    </div>
-{% endif %}
+<hr class="post-list__divider " />
+
+<nav class="pagination" role="navigation">
+    {% if paginator.previous_page %}
+        <a class="newer-posts pagination__newer btn btn-small btn-tertiary" href="{{ paginator.previous_page_path }}#blog">&larr; 最近</a>
+    {% endif %}
+    <span class="pagination__page-number">{{ paginator.page }} / {{ paginator.total_pages }}</span>
+    {% if paginator.next_page %}
+        <a class="older-posts pagination__older btn btn-small btn-tertiary" href="{{ paginator.next_page_path }}#blog">更早 &rarr;</a>
+    {% endif %}
+</nav>

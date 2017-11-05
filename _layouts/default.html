@@ -1,29 +1,26 @@
----
-layout: compress
----
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
-    {% if page.title != 'index' %}
-        {% include head.html %}
-    {% else %}
-        {% include index_head.html %}
-    {% endif %}
+  {% include head.html %}
 
-<body id="page-top" class="landing-page">
+  <body>
 
-    {% if page.title != 'index' %}
-        {% include blog_header.html %}
-    {% endif %}
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+    
+    {% include side-panel.html %}
 
-    {{ content }}
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            {{ content }}
+            {% include footer.html %}
+        </div>
+    </div>
+    
+    {% include external.html %}
+    
+  </body>
 
-    {% if page.title != 'index' %}
-        {% include foot.html %}
-    {% else %}
-        {% include index_foot.html %}
-    {% endif %}
-
-</body>
 </html>
