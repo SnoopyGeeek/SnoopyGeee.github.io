@@ -5,7 +5,7 @@ date: 2017-11-05 16:36:24.000000000 +09:00
 tags：pynauty graphembedding
 ---
 
-#### What's this
+#### Introduction
 
 [Pynauty](https://web.cs.dal.ca/~peter/software/pynauty/html/index.html) is a Python/C extension module. It can be used to compare graphs for isomorphism and to determine their automorphism group. It is based on the [Nauty](http://www3.cs.stonybrook.edu/~algorith/implement/nauty/implement.shtml) C procedures.
 
