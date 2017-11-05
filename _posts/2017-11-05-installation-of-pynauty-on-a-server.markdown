@@ -35,8 +35,8 @@ extra_objects = [nauty_dir + '/' + 'nauty.a'],
 ```
 You can find extra_objects by searching for key words and change it like the form.
 
-6. *python setup.py build*
-7. *python setup.py install*
+6. `python setup.py build`
+7. `python setup.py install`
 
 
 #### Conclusion
